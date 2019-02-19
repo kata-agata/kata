@@ -1,16 +1,10 @@
-<p>
-  cards works!
-  {{card.title | uppercase}}
-</p>
-<div>
-<label>name
-  <input [(ngModel)]="card.title" placeholder="name">
-</label>
-</div>
-
 <h2>List of cards</h2>
 <ul class="cards">
-  <li *ngFor="let card of cards">
+  <li *ngFor="let card of cards"
+  [class.selected]="card === selectedCard"
+  (click)="onSelect(card)">
     <span class="badge">{{card.id}}</span> {{card.title}}
   </li>
 </ul>
+
+<app-card-detail [card]="selectedCard"></app-card-detail>

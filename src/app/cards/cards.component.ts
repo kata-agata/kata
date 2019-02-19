@@ -8,12 +8,14 @@ import { CARDS } from '../mock-cards'
   styleUrls: ['./cards.component.scss']
 })
 export class CardsComponent implements OnInit {
-  card: Card = {
-    id:1,
-    title:'pierwsza moja karta'
+  cards=CARDS;
+  selectedCard:Card;
+
+  onSelect(card: Card):void{
+    this.selectedCard=card;
   }
 
-  cards=CARDS;
+
 
   constructor() { }
 
