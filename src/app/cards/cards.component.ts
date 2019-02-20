@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Card } from '../card';
-import { CARDS } from '../mock-cards'
+import { CardService } from '../card.service'
 
 @Component({
   selector: 'app-cards',
@@ -8,17 +8,22 @@ import { CARDS } from '../mock-cards'
   styleUrls: ['./cards.component.scss']
 })
 export class CardsComponent implements OnInit {
-  cards=CARDS;
+  cards: Card[];
   selectedCard:Card;
 
   onSelect(card: Card):void{
     this.selectedCard=card;
   }
 
+  getCards(): void{
+    this.cardService.getCards().
+      subscribe(cards => this.cards = cards);
+  }
 
+  constructor(private cardService: CardService) {  }
 
-  constructor() { }
-
-  ngOnInit() {}
+  ngOnInit() {
+    this.getCards();
+  }
 
 }
