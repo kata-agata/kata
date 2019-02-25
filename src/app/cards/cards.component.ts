@@ -9,15 +9,10 @@ import { CardService } from '../card.service'
 })
 export class CardsComponent implements OnInit {
   cards: Card[];
-  selectedCard:Card;
-
-  onSelect(card: Card):void{
-    this.selectedCard=card;
-  }
 
   getCards(): void{
-    this.cardService.getCards().
-      subscribe(cards => this.cards = cards);
+    this.cardService.getCards()
+      .subscribe(cards => this.cards = cards);
   }
 
   constructor(private cardService: CardService) {  }

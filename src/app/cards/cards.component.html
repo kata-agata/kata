@@ -1,10 +1,8 @@
 <h2>List of cards</h2>
 <ul class="cards">
-  <li *ngFor="let card of cards"
-  [class.selected]="card === selectedCard"
-  (click)="onSelect(card)">
-    <span class="badge">{{card.id}}</span> {{card.title}}
+  <li *ngFor="let card of cards">
+    <a routerLink='/detail/{{card.id}}'>
+      <span class="badge">{{card.id}}</span> {{card.title}}
+    </a>
   </li>
 </ul>
-
-<app-card-detail [card]="selectedCard"></app-card-detail>
